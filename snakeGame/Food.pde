@@ -1,9 +1,11 @@
 class Food{
   PVector pos;
-  int boardSize = 50;
-  int scale = 10;
+  int boardSize;
+  int scale;
   
-  Food(){
+  Food(int boardSize, int scale){
+    this.boardSize = int(boardSize/scale);
+    this.scale = scale;
     place();
   }
   

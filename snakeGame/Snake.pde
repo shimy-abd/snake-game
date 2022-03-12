@@ -1,12 +1,13 @@
 class Snake{
- int scale = 10;
- int boardSize = 500;
+ int scale;
+ int boardSize;
  PVector head;
  PVector dir;
  ArrayList<PVector> points;
  
- Snake(){
-   int len= 5;
+ Snake(int boardSize, int scale, int len){
+   this.boardSize = boardSize;
+   this.scale = scale;
    head = new PVector(boardSize/2, boardSize/2);
    dir = new PVector(1, 0);
    points = new ArrayList<>();
@@ -53,5 +54,9 @@ class Snake{
    return head.x < 0 || head.x >= boardSize
      || head.y < 0 || head.y >= boardSize
      || points.lastIndexOf(head) > 0;
+ }
+ 
+ int getLen(){
+   return points.size();
  }
 }

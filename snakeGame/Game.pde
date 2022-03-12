@@ -1,20 +1,27 @@
 import java.io.File;
 
+static int STARTING_SPEED_CONST = 21;
+static int GAME_BOARD_SIZE = 500;
+static int SCALE = 10;
+static int STARTING_SNAKE_LEN = 5;
+
 Snake snake;
 Food food;
 int count = 0;
-int inverseGameSpeed = 10;
+int inverseGameSpeed = 20;
 
 void setup(){
-  size(500, 500);
-  snake = new Snake();
-  food = new Food();
+  size(500, 500); // cannot pass a variable to size for some reason
+  snake = new Snake(GAME_BOARD_SIZE, SCALE, STARTING_SNAKE_LEN);
+  food = new Food(GAME_BOARD_SIZE, SCALE);
 }
 
 void draw(){
   if (count++ == inverseGameSpeed){
     count = 0;
     snake.moveAndEat(null, food);
+    if (inverseGameSpeed > 1)
+      inverseGameSpeed = STARTING_SPEED_CONST - (snake.getLen()/5);
   }
   background(100);
   snake.draw();
