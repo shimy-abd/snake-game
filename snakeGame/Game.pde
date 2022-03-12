@@ -19,13 +19,19 @@ void setup(){
 void draw(){
   if (count++ == inverseGameSpeed){
     count = 0;
-    snake.moveAndEat(null, food);
+    int status = snake.moveAndEat(null, food);
+    if (status < 0) {
+      endGame();
+      return;
+    }
     if (inverseGameSpeed > 1)
       inverseGameSpeed = STARTING_SPEED_CONST - (snake.getLen()/5);
   }
   background(100);
   snake.draw();
   food.draw();
+  textSize(15);
+  text("Score: " + getScore(), 40, 480);
 }
 
 void keyPressed(){
@@ -40,6 +46,21 @@ void keyPressed(){
      dir = new PVector(1, 0);
   }
   if (dir != null){
-    snake.moveAndEat(dir, food);
+    int status = snake.moveAndEat(dir, food);
+    if (status < 0)
+      endGame();
   }
 }
+  
+  void endGame(){
+    background(40);
+    textSize(30);
+    text("Game Over", 180, 250);
+    textSize(15);
+    text("Score: " + getScore(), 180, 275);
+    noLoop();
+  }
+  
+  int getScore(){
+    return snake.getLen() - STARTING_SNAKE_LEN;
+  }

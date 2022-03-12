@@ -26,10 +26,10 @@ class Snake{
  /**
  newDir(Optional) : new direction for the snake to move in. If null defaults to the previous direction.
  */
- void moveAndEat(PVector newDir, Food food){
+ int moveAndEat(PVector newDir, Food food){
    if (newDir != null && dir.equals(newDir.copy().mult(-1))){
      println("Back move not allowed");
-     return;
+     return 1;
    }
    if (newDir != null)
      dir = newDir;
@@ -42,8 +42,9 @@ class Snake{
    }
    if (isCollision()){
      println("Game Over...");
-     exit();
+     return -1;
    }
+   return 0;
  }
  
  boolean canEat(Food food){
