@@ -52,15 +52,15 @@ void keyPressed(){
   }
 }
   
-  void endGame(){
-    background(40);
-    textSize(30);
-    text("Game Over", 180, 250);
-    textSize(15);
-    text("Score: " + getScore(), 180, 275);
-    noLoop();
-  }
-  
-  int getScore(){
-    return snake.getLen() - STARTING_SNAKE_LEN;
-  }
+void endGame(){
+  background(40);
+  textSize(30);
+  text("Game Over", 180, 250);
+  textSize(15);
+  text("Score: " + getScore(), 180, 275);
+  noLoop();
+}
+
+int getScore(){
+  return snake.getLen() - STARTING_SNAKE_LEN;
+}
