@@ -27,6 +27,6 @@ void keyPressed(){
      dir = new PVector(1, 0);
   }
   if (dir != null){
-    snake.move(dir);
+    snake.moveAndEat(dir, food);
   }
 }

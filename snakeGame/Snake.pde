@@ -1,5 +1,4 @@
 class Snake{
- int len = 5;
  int scale = 10;
  int boardSize = 500;
  PVector head;
@@ -7,7 +6,7 @@ class Snake{
  ArrayList<PVector> points;
  
  Snake(){
-   len= 5;
+   int len= 5;
    head = new PVector(boardSize/2, boardSize/2);
    dir = new PVector(1, 0);
    points = new ArrayList<>();
@@ -23,8 +22,23 @@ class Snake{
    }
  }
  
- void move(PVector dir){
+ void moveAndEat(PVector dir, Food food){
+   if(this.dir.equals(dir.copy().mult(-1))){
+     println("Back move not allowed");
+     return;
+   }
+   this.dir = dir;
+   head.add(dir.copy().mult(scale));
+   points.add(0, head.copy());
+   if (canEat(food)){
+     food.place();
+   } else {
+     points.remove(points.size()-1);
+   }
  }
  
+ boolean canEat(Food food){
+   return head.equals(food.pos);
+ }
   
 }

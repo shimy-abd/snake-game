@@ -8,7 +8,7 @@ class Food{
   }
   
   void draw(){
-    fill(100, 50, 50);
+    fill(200, 100, 0);
     square(pos.x, pos.y, scale);
   }
   
