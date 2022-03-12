@@ -22,12 +22,16 @@ class Snake{
    }
  }
  
- void moveAndEat(PVector dir, Food food){
-   if(this.dir.equals(dir.copy().mult(-1))){
+ /**
+ newDir(Optional) : new direction for the snake to move in. If null defaults to the previous direction.
+ */
+ void moveAndEat(PVector newDir, Food food){
+   if (newDir != null && dir.equals(newDir.copy().mult(-1))){
      println("Back move not allowed");
      return;
    }
-   this.dir = dir;
+   if (newDir != null)
+     dir = newDir;
    head.add(dir.copy().mult(scale));
    points.add(0, head.copy());
    if (canEat(food)){
@@ -38,7 +42,7 @@ class Snake{
  }
  
  boolean canEat(Food food){
-   return head.equals(food.pos);
+   return food != null && head.equals(food.pos);
  }
   
 }

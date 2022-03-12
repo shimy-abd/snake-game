@@ -2,6 +2,8 @@ import java.io.File;
 
 Snake snake;
 Food food;
+int count = 0;
+int inverseGameSpeed = 10;
 
 void setup(){
   size(500, 500);
@@ -10,9 +12,13 @@ void setup(){
 }
 
 void draw(){
-    background(100);
-    snake.draw();
-    food.draw();
+  if (count++ == inverseGameSpeed){
+    count = 0;
+    snake.moveAndEat(null, food);
+  }
+  background(100);
+  snake.draw();
+  food.draw();
 }
 
 void keyPressed(){
