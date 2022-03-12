@@ -23,13 +23,13 @@ void draw(){
 
 void keyPressed(){
   PVector dir = null;
-  if (key == 'w'){
+  if (key == 'w' || keyCode == UP){
     dir = new PVector(0, -1);
-  } else if (key == 'a'){
+  } else if (key == 'a' || keyCode == LEFT){
      dir = new PVector(-1, 0);
-  } else if (key == 's'){
+  } else if (key == 's' || keyCode == DOWN){
      dir = new PVector(0, 1);
-  } else if (key =='d'){
+  } else if (key =='d' || keyCode == RIGHT){
      dir = new PVector(1, 0);
   }
   if (dir != null){
