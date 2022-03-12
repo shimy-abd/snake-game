@@ -13,6 +13,6 @@ class Food{
   }
   
   void place(){
-    pos = new PVector(int(random(boardSize-scale))*scale, int(random(boardSize-scale))*scale);
+    pos = new PVector(int(random(boardSize-1))*scale, int(random(boardSize-1))*scale);
   }
 }

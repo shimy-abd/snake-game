@@ -39,10 +39,19 @@ class Snake{
    } else {
      points.remove(points.size()-1);
    }
+   if (isCollision()){
+     println("Game Over...");
+     exit();
+   }
  }
  
  boolean canEat(Food food){
    return food != null && head.equals(food.pos);
  }
-  
+ 
+ boolean isCollision(){
+   return head.x < 0 || head.x >= boardSize
+     || head.y < 0 || head.y >= boardSize
+     || points.lastIndexOf(head) > 0;
+ }
 }
